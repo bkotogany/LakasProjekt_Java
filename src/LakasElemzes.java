@@ -4,7 +4,8 @@ import java.util.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
-class Lakas {
+class Lakas 
+{
     int kerulet;
     int terulet;
     int szobak_szama;
@@ -13,9 +14,12 @@ class Lakas {
     String allapot;
 }
 
-public class LakasElemzes {
-    public static void main(String[] args) {
-        try {
+public class LakasElemzes 
+{
+    public static void main(String[] args) 
+    {
+        try 
+        {
             // JSON beolvasása
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(new FileReader("hasznalt.json"), JsonObject.class);
@@ -31,10 +35,12 @@ public class LakasElemzes {
             // 2. feladat: Lakások száma kerületenként
             System.out.println("2. feladat:");
             Map<Integer, Integer> keruletSzam = new TreeMap<>();
-            for (Lakas l : lakasok) {
+            for (Lakas l : lakasok) 
+            {
                 keruletSzam.put(l.kerulet, keruletSzam.getOrDefault(l.kerulet, 0) + 1);
             }
-            for (Map.Entry<Integer, Integer> entry : keruletSzam.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : keruletSzam.entrySet()) 
+            {
                 System.out.println(entry.getKey() + ". kerület: " + entry.getValue());
             }
 
@@ -45,8 +51,10 @@ public class LakasElemzes {
 
             // 4. feladat: 6. kerületi lakások átlagos négyzetméter ára
             List<Lakas> hatodikKerulet = new ArrayList<>();
-            for (Lakas l : lakasok) {
-                if (l.kerulet == 6) {
+            for (Lakas l : lakasok) 
+            {
+                if (l.kerulet == 6) 
+                {
                     hatodikKerulet.add(l);
                 }
             }
@@ -58,7 +66,8 @@ public class LakasElemzes {
             System.out.println("4. feladat:");
             System.out.printf("Átlagos négyzetméter ár a 6. kerületben: %.0f Ft/m2%n", atlagNmAr);
 
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
         }
     }

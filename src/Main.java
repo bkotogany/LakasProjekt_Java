@@ -4,7 +4,8 @@ import java.util.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
-class Lakas {
+class Lakas 
+{
     int kerulet;
     int terulet;
     int szobak_szama;
@@ -13,9 +14,12 @@ class Lakas {
     String allapot;
 }
 
-public class Main {
-    public static void main(String[] args) {
-        try {
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        try 
+        {
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(new FileReader("hasznalt.json"), JsonObject.class);
             JsonArray lakasokJson = jsonObject.getAsJsonArray("lakasok");
@@ -30,10 +34,12 @@ public class Main {
             // 2. feladat: Lakások száma kerületenként
             System.out.println("2. feladat:");
             Map<Integer, Integer> keruletSzam = new TreeMap<>();
-            for (Lakas l : lakasok) {
+            for (Lakas l : lakasok) 
+            {
                 keruletSzam.put(l.kerulet, keruletSzam.getOrDefault(l.kerulet, 0) + 1);
             }
-            for (Map.Entry<Integer, Integer> entry : keruletSzam.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : keruletSzam.entrySet()) 
+            {
                 System.out.println(entry.getKey() + ". kerület: " + entry.getValue());
             }
 
@@ -44,8 +50,10 @@ public class Main {
 
             // 4. feladat: 6. kerületi lakások átlagos négyzetméter ára
             List<Lakas> hatodikKerulet = new ArrayList<>();
-            for (Lakas l : lakasok) {
-                if (l.kerulet == 6) {
+            for (Lakas l : lakasok) 
+            {
+                if (l.kerulet == 6) 
+                {
                     hatodikKerulet.add(l);
                 }
             }
@@ -56,7 +64,8 @@ public class Main {
 
             System.out.println("4. feladat:");
             System.out.printf("Átlagos terület a 6. kerületben: %.0f m2%n", (hatodikKerulet.stream().mapToInt(l -> l.terulet).average().orElse(0)));
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
         }
     }
